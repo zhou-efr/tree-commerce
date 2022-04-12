@@ -1,0 +1,63 @@
+$delay:50ms;
+body{
+  font-size: 16px;
+  background: white;
+  font-style: normal;
+}
+
+.AnimatedLink {
+  font-weight: lighter;
+  font-family: SimSun;
+  color: black;
+  margin-bottom: -0.1em;
+
+
+  &:hover{
+    span{
+      i:first-child {
+        transform: translateX(100%) scaleX(0);
+      }
+
+      i:last-child{
+        transform:translateX(20%) scaleX(1) ;
+      }
+    }
+  }
+
+  span{
+    display: inline-block;
+  }
+
+  i{
+    display: block;
+    transition: transform 400ms ease-in-out;
+    line-height: 0.2em;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-style: normal;
+    margin-right: -0.1em;
+  }
+
+  i:first-child {
+    //background-color: red;
+  }
+
+  i:last-child{
+    transform: translateX(-100%) scaleX(0) rotate(10deg);
+    //background-color: black;
+    //color:white;
+    margin-top:-123%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  span {
+    @for $i from 1 through 15{
+      &:nth-child(#{$i}) {
+        i{
+          transition-delay: calc(#{$delay} * #{$i});
+        }
+      }
+    }
+  }
+}
