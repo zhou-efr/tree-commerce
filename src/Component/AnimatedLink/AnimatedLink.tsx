@@ -1,5 +1,6 @@
 import "./AnimatedLink.scss";
-import {FC} from "react";
+import {FC, useState} from "react";
+import {NavLink} from "react-router-dom";
 
 interface AnimatedLinkProps {
     className?: string;
@@ -11,18 +12,21 @@ interface AnimatedLinkProps {
 }
 
 export const AnimatedLink:FC<AnimatedLinkProps> = ({className, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, children}) => {
+    let [active, setActive] = useState(false);
+
     if(typeof children !== "string")
         return <></>
 
     let text = children.split('');
 
     return (
-        <div className={"AnimatedLink ".concat(className as string)} onClick={() => console.log(to)}>
-            {
-                text.map((character, index) => {
-                    return (
-                        <span key={index}>
-                            <i className={"p-1 "
+        <NavLink className={({isActive}) => {setActive(isActive); return ""}} to={to}>
+            <div className={"AnimatedLink inline-block mx-1 ".concat(className as string)} onClick={() => console.log(to)}>
+                {
+                    text.map((character, index) => {
+                        return (
+                            <span key={index}>
+                            <i className={`p-1 ${active ? "font-bold" : ""} `
                                 .concat(notHoverClassName as string)}
                             >
                                 {character}
@@ -35,9 +39,10 @@ export const AnimatedLink:FC<AnimatedLinkProps> = ({className, hoverColor, hover
                                 {character}
                             </i>
                         </span>
-                    );
-                })
-            }
-        </div>
+                        );
+                    })
+                }
+            </div>
+        </NavLink >
     );
 }
