@@ -8,10 +8,11 @@ interface AnimatedLinkProps {
     hoverTextColor?: string;
     notHoverClassName?: string;
     hoverClassName?: string;
+    onClick?: () => void;
     to: string;
 }
 
-export const AnimatedLink:FC<AnimatedLinkProps> = ({className, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, children}) => {
+export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onClick, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, children}) => {
     let [active, setActive] = useState(false);
 
     if(typeof children !== "string")
@@ -20,14 +21,18 @@ export const AnimatedLink:FC<AnimatedLinkProps> = ({className, hoverColor, hover
     let text = children.split('');
 
     return (
-        <NavLink className={({isActive}) => {setActive(isActive); return ""}} to={to}>
+        <NavLink className={({isActive}) => {setActive(isActive); return ""}} to={to} onClick={onClick}>
             <div className={"AnimatedLink inline-block mx-1 ".concat(className as string)} onClick={() => console.log(to)}>
                 {
                     text.map((character, index) => {
                         return (
                             <span key={index}>
                             <i className={`p-1 ${active ? "font-bold" : ""} `
-                                .concat(notHoverClassName as string)}
+                                .concat(active ? (
+                                    (hoverColor as string).concat(" ")
+                                    .concat(hoverTextColor as string).concat(" ")
+                                    .concat(hoverClassName as string)
+                                ) : notHoverClassName as string)}
                             >
                                 {character}
                             </i>
