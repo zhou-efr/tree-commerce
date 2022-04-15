@@ -1,20 +1,14 @@
-import {FC} from "react";
+import {FC, useContext} from "react";
+import {UserContext} from "../../../App";
 
-interface userData {
-    name: string;
-    email: string;
-}
+export const Profile:FC = () => {
+    const context = useContext(UserContext);
 
-interface ProfilProps {
-    user: userData;
-}
-
-export const Profile:FC<ProfilProps> = (props) => {
     return (
         <div>
             <h1>Profil</h1>
-            <p>{props.user.name}</p>
-            <p>{props.user.email}</p>
+            <p>{context.user && context.user.username}</p>
+            <p>{context.user && context.user.email}</p>
         </div>
     );
 }
