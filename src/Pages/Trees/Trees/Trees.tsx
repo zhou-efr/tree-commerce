@@ -1,19 +1,21 @@
-import {FC} from "react";
-import {TreeType} from "../index";
+import {FC, useContext} from "react";
 import {Link} from "react-router-dom";
+import {ProductContext} from "../../../App";
 
-interface TreesListProps {
-    trees: TreeType[];
-}
+// interface TreesListProps {
+//     trees: TreeType[];
+// }
 
-export const Trees:FC<TreesListProps> = (props) => {
+export const Trees:FC = () => {
+    const context = useContext(ProductContext);
+
     return (
         <div>
-            {props.trees.map((tree) => {
+            {context.trees && context.trees.map((tree, index) => {
                 return (
-                    <div key={tree.id} className={"m-1"}>
-                        <Link to={`/trees/${tree.id}`}><h3 className={"italic underline"}>{tree.name}</h3></Link>
-                        <p><em>description :</em>{tree.description}</p>
+                    <div key={index} className={"m-1"}>
+                        <Link to={`/trees/${tree.TaxonName}`}><h3 className={"italic underline"}>{tree.TaxonName}</h3></Link>
+                        <p><em>description :</em>{tree.Author}</p>
                     </div>
                 )
             })}

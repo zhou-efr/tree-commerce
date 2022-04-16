@@ -107,10 +107,6 @@ export const Login:FC<LoginProps> = (props) => {
                     >
                         Sign In
                     </button>
-                    <a className={"inline-block align-baseline font-bold text-sm text-black hover:text-gray-600"}
-                       href={"#"}>
-                        Forgot Password?
-                    </a>
                 </div>
             </form>
         </div>

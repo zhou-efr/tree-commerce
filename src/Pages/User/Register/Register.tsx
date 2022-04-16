@@ -1,122 +1,199 @@
 import React, {FC, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
+
 interface RegisterProps {
     onLogin: (user: any) => void;
 }
 
 export const Register:FC<RegisterProps> = (props) => {
     const [username, setUsername] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [profilePicture, setProfilePicture] = useState<File | null | undefined>(undefined);
+    const [address, setAddress] = useState('');
+    const [loading, setLoading] = useState(false);
     let navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const credentialstring:RequestCredentials = 'include';
-        // console.log(username, password, email);
 
-        // send data to localhost:8080/register
-        let url = 'http://localhost:8080/register';
-        const options = {
+        const IncludeCredentialString:RequestCredentials = 'include';
+
+        const formData = new FormData();
+        // @ts-ignore
+        formData.append('file', profilePicture);
+
+        const upload_url = 'http://localhost:8080/upload';
+        const upload_options = {
             method: 'POST',
+            body: formData,
+            credentials: IncludeCredentialString,
             headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: credentialstring,
-            body: JSON.stringify({
-                username,
-                password,
-                email
-            })
+                'Accept': 'application/json',
+            }
         };
 
-        fetch(url, options)
-            .then(res => {
-                if (res.status === 200) {
-                    console.log('Login success');
-                    // retrieve user data from localhost:8080/user
-                    url = 'http://localhost:8080/user';
-                    const options = {
-                        method: 'GET',
-                        credentials: credentialstring,
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    };
-                    fetch(url, options)
-                        .then(res => {
-                            if (res.status === 200) {
-                                console.log('Get user data success');
-                                res.json()
-                                    .then(data => {
-                                        console.log(data);
-                                        props.onLogin(data);
-                                        navigate('/');
-                                    })
-                            } else {
-                                console.log('Get user data failed');
-                            }
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
-                } else {
-                    console.log('Failed to register');
-                }
-            })
-            .catch(err => console.log(err));
+        const register_url = 'http://localhost:8080/register';
 
-        // reset states
-        // setUsername('');
-        // setPassword('');
-        // setEmail('');
+        const get_user_url = 'http://localhost:8080/user';
+        const get_user_options = {
+            method: 'GET',
+            credentials: IncludeCredentialString,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const registerUser = async () => {
+            setLoading(true);
+            const image_response = await fetch(upload_url, upload_options).catch(err => { setLoading(false); throw err; });
+            let image_url = 'http://localhost:8080/files/default-profile-picture.png';
+            if (image_response.status === 200) {
+                const image_json = await image_response.json();
+                image_url = image_json.fileUrl;
+            } else {
+                console.log('Image upload failed');
+                throw new Error('Image upload failed');
+            }
+            const register_options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: IncludeCredentialString,
+                body: JSON.stringify({
+                    username,
+                    firstName,
+                    lastName,
+                    password,
+                    email,
+                    profilePicture: image_url,
+                    address
+                })
+            };
+            await fetch(register_url, register_options).catch(err => { setLoading(false); throw err; });
+            const user_response = await fetch(get_user_url, get_user_options).catch(err =>  { setLoading(false); throw err; });
+            const user = await user_response?.json();
+            if (user) {
+                props.onLogin(user);
+                navigate('/');
+            }else {
+                alert('Registration failed');
+            }
+            setLoading(false);
+        };
+
+        registerUser().catch(err =>  { setLoading(false); throw err });
     };
-
+    
     return (
         <div className={"w-1/2 m-3"}>
             <h1 className={"text-lg"}>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <div className={"flex flex-wrap -mx-3 mb-6"}>
-                    <div className={"w-full px-3 mb-6 md:mb-0"}>
-                        <label className={"block text-gray-700 text-sm font-bold mb-2"}>
-                            Username
-                        </label>
-                        <input
-                            className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
-                            type={"text"}
-                            placeholder={"Username"}
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                    </div>
-                    <div className={"w-full px-3"}>
-                        <label className={"block text-gray-700 text-sm font-bold mb-2"}>
-                            Email
-                        </label>
-                        <input
-                            className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
-                            type={"text"}
-                            placeholder={"Email"}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className={"w-full px-3"}>
-                        <label className={"block text-gray-700 text-sm font-bold mb-2"}>
-                            Password
-                        </label>
-                        <input
-                            className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
-                            type={"password"}
-                            placeholder={"Password"}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <div className={"w-full px-3 mb-6 md:mb-0"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Username
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"text"}
+                        placeholder={"Username"}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
                 </div>
-                <div className={"flex items-center justify-between"}>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        First Name
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"text"}
+                        placeholder={"First Name"}
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+                </div>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Last Name
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"text"}
+                        placeholder={"Last Name"}
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+                </div>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Email
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"text"}
+                        placeholder={"Email"}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Password
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"password"}
+                        placeholder={"Password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Confirm Password
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"password"}
+                        placeholder={"Confirm Password"}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                </div>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Address
+                    </label>
+                    <input
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"text"}
+                        placeholder={"Address"}
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                    />
+                </div>
+                <div className={"w-full px-3"}>
+                    <label className={"block text-gray-700 text-sm font-bold mb-2"}>
+                        Profile Picture
+                    </label>
+                    <input
+                        disabled={loading}
+                        className={"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
+                        type={"file"}
+                        placeholder={"Profile Picture"}
+                        // value={profilePicture?.toString()}
+                        onChange={(e) => setProfilePicture(e.target?.files?.[0])}
+                    />
+                </div>
+                <div className={"mt-5 flex items-center justify-between"}>
                     <button
+                        disabled={loading}
                         className={"bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"}
                         type={"submit"}
                     >

@@ -1,6 +1,6 @@
 import "./AnimatedLink.scss";
 import {FC, useState} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 interface AnimatedLinkProps {
     className?: string;
@@ -9,11 +9,13 @@ interface AnimatedLinkProps {
     notHoverClassName?: string;
     hoverClassName?: string;
     onClick?: () => void;
+    redirect?: string;
     to: string;
 }
 
-export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onClick, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, children}) => {
+export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onClick, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, redirect, children}) => {
     let [active, setActive] = useState(false);
+    const navigate = useNavigate();
 
     if(typeof children !== "string")
         return <></>
@@ -21,7 +23,13 @@ export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onClick, hoverCol
     let text = children.split('');
 
     return (
-        <NavLink className={({isActive}) => {setActive(isActive); return ""}} to={to} onClick={onClick}>
+        <NavLink className={({isActive}) => {setActive(isActive); return ""}} to={to} onClick={() => {
+            if (onClick) {
+                onClick();
+            }
+            if (redirect) {
+                navigate(redirect);
+            }}}>
             <div className={"AnimatedLink inline-block mx-1 ".concat(className as string)} onClick={() => console.log(to)}>
                 {
                     text.map((character, index) => {

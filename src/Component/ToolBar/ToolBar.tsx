@@ -9,7 +9,7 @@ interface ToolBarProps {
 
 export const ToolBar:FC<ToolBarProps> = (props) => {
     const context = useContext(UserContext);
-    const isAuthenticated = context.user !== null;
+    const isAuthenticated = context?.user !== null;
     return (
         <div>
             <div>
@@ -29,11 +29,12 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                             </>
                         ):(
                             <>
-                                <AnimatedLink to={'/'} onClick={() => props.onLogout()} hoverTextColor={"text-white"} hoverColor={"bg-black"}>Logout</AnimatedLink> |{" "}
+                                <AnimatedLink to={'/login'} redirect={'/'} onClick={() => props.onLogout()} hoverTextColor={"text-white"} hoverColor={"bg-black"}>Logout</AnimatedLink> |{" "}
                                 <AnimatedLink to={'/profile'} hoverTextColor={"text-white"} hoverColor={"bg-black"}>Profile</AnimatedLink>
                             </>
                         )
-                    }
+                    } |{" "}
+                    <AnimatedLink to={'/cart'} hoverTextColor={"text-white"} hoverColor={"bg-black"}>Cart</AnimatedLink>
                 </nav>
                 <Outlet />
             </div>
