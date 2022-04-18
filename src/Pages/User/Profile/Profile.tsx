@@ -21,6 +21,27 @@ export const Profile:FC = () => {
                                     <p>{context?.user.address}</p>
                                 </div>
                             </div>
+
+                            {
+                                context?.user.orders && (
+                                    <div className={""}>
+                                        <h2 className={"my-1 text-lg font-bold"}>Previous orders</h2>
+                                        <div className={"ml-3"}>
+                                            {
+                                                context?.user.orders.map((order, index) => {
+                                                    return (
+                                                        <div key={index}>
+                                                            <h3>Order <em>#{order.order_id}</em></h3>
+                                                            <p>{order.amount}S$</p>
+                                                            <p>{order.payment_status}</p>
+                                                        </div>
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                )
+                            }
                         </div>
                     )
                     :(

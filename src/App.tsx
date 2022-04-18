@@ -5,10 +5,29 @@ import {Login, Profile, Register} from "./Pages/User";
 import {Tree, Trees} from "./Pages/Trees";
 import {NotFound} from "./Pages/Miscellaneous";
 import {ToolBar} from "./Component/ToolBar/ToolBar";
-import { Cart } from "./Pages/Shop";
+import { Cart, Checkout } from "./Pages/Shop";
+import { API_URL } from "./Constants/Constants";
+
+interface OrderType {
+    payer_id: string;
+    order_id: string,
+    payment_id: string,
+    payment_status: string,
+    payer_address: {
+        address_line_1: string,
+        admin_area_2: string,
+        postal_code: string,
+        country_code: string
+    },
+    payer_email: string,
+    basket: TreeType[],
+    amount: number
+}
+
 
 interface UserType {
     basket: TreeType[] | null;
+    orders: OrderType[] | null;
     username: string,
     firstName: string,
     lastName: string,
@@ -70,7 +89,7 @@ const App:FC = () => {
             // console.log(basket);
             // console.log(contextUser);
             if (currentUser) {
-                await fetch(`http://localhost:8080/user/basket/${currentUser.username}`, {
+                await fetch(`${API_URL}/user/basket/${currentUser.username}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -79,7 +98,7 @@ const App:FC = () => {
                 }).catch(err => {
                     throw err;
                 });
-                const basketResponse = await fetch(`http://localhost:8080/user/basket/${currentUser.username}`).catch(err => {
+                const basketResponse = await fetch(`${API_URL}/user/basket/${currentUser.username}`).catch(err => {
                     throw err;
                 });
                 const basketResponseJson = await basketResponse.json();
@@ -112,7 +131,7 @@ const App:FC = () => {
 
     useEffect( () => {
         const fetchData = async () => {
-            const tempTrees = await fetch("http://localhost:8080/trees/random/64");
+            const tempTrees = await fetch(`${API_URL}/trees/random/64`);
             // console.log(tempTrees);
             const tempTreesJson = await tempTrees.json();
             // console.log(tempTreesJson);
@@ -144,7 +163,7 @@ const App:FC = () => {
         }
     };
     const onLogout = () => {
-        fetch('http://localhost:8080/logout', {
+        fetch(`${API_URL}/logout`, {
             method: 'GET',
             credentials: 'include'
         }).then(response => {
@@ -172,6 +191,7 @@ const App:FC = () => {
                                             <Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />
                                             <Route path="profile" element={<Profile />} />
                                             <Route path="cart" element={<Cart />} />
+                                            <Route path="checkout" element={<Checkout />} />
                                             <Route path={"Trees"}>
                                                 <Route index element={<Trees />}/>
                                                 <Route path=":TaxonName" element={<Tree />} />

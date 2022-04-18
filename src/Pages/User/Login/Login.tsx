@@ -1,5 +1,6 @@
 import {FC, useState} from "react";
 import { useNavigate } from "react-router-dom";
+import {API_URL} from "../../../Constants/Constants";
 
 interface LoginProps {
     onLogin: (user: any) => void;
@@ -16,7 +17,7 @@ export const Login:FC<LoginProps> = (props) => {
         // console.log(email, password);
 
         // send data to localhost:8080/login
-        let url = 'http://localhost:8080/login';
+        let url = `${API_URL}/login`;
         const options = {
             method: 'POST',
             headers: {
@@ -34,7 +35,7 @@ export const Login:FC<LoginProps> = (props) => {
                 if (res.status === 200) {
                     console.log('Login success');
                     // retrieve user data from localhost:8080/user
-                    url = 'http://localhost:8080/user';
+                    url = `${API_URL}/user`;
                     const options = {
                         method: 'GET',
                         credentials: credentialstring,

@@ -23,7 +23,7 @@ export const Tree:FC = () => {
                             <h5 className={"card-title"}>
                                 {tree.TaxonName}-{tree.price}S$
                                 <button
-                                    className={"inline-block text-red-600"}
+                                    className={"inline-block ml-2 text-red-600"}
                                     onClick={() => basketContext?.addToCart(tree, basketContext?.basket, userContext?.user)}>
                                     add to card
                                 </button>

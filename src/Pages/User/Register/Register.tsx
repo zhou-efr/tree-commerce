@@ -1,5 +1,6 @@
 import React, {FC, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {API_URL} from "../../../Constants/Constants";
 
 
 interface RegisterProps {
@@ -27,7 +28,7 @@ export const Register:FC<RegisterProps> = (props) => {
         // @ts-ignore
         formData.append('file', profilePicture);
 
-        const upload_url = 'http://localhost:8080/upload';
+        const upload_url = `${API_URL}/upload`;
         const upload_options = {
             method: 'POST',
             body: formData,
@@ -37,9 +38,9 @@ export const Register:FC<RegisterProps> = (props) => {
             }
         };
 
-        const register_url = 'http://localhost:8080/register';
+        const register_url = `${API_URL}/register`;
 
-        const get_user_url = 'http://localhost:8080/user';
+        const get_user_url = `${API_URL}/user`;
         const get_user_options = {
             method: 'GET',
             credentials: IncludeCredentialString,
@@ -51,7 +52,7 @@ export const Register:FC<RegisterProps> = (props) => {
         const registerUser = async () => {
             setLoading(true);
             const image_response = await fetch(upload_url, upload_options).catch(err => { setLoading(false); throw err; });
-            let image_url = 'http://localhost:8080/files/default-profile-picture.png';
+            let image_url = `${API_URL}/files/default-profile-picture.png`;
             if (image_response.status === 200) {
                 const image_json = await image_response.json();
                 image_url = image_json.fileUrl;

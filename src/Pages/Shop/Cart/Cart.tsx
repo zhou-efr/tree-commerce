@@ -1,9 +1,23 @@
 import {FC, useContext} from "react";
-import {BasketContext} from "../../../App";
-import {Link} from "react-router-dom";
+import {BasketContext, UserContext} from "../../../App";
+import {Link, useNavigate} from "react-router-dom";
 
 export const Cart:FC = () => {
     const contextBasket = useContext(BasketContext);
+    const userContext = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const handleCheckout = () => {
+        if (userContext?.user){
+            if(contextBasket?.basket && contextBasket.basket.length > 0) {
+                navigate('/checkout');
+            }else {
+                alert('Your basket is empty');
+            }
+        }else {
+            alert("Please log in first");
+        }
+    }
 
     return (
         <div className={"m-2"}>
@@ -18,8 +32,8 @@ export const Cart:FC = () => {
                 }
             </div>
             <h4 className={"mt-2"}>
-                Total: {contextBasket?.basket?.reduce((a, b) => a + b.price, 0)}S$
-                <button className={"inline-block ml-3 p-1 px-2 shadow"}>Checkout</button>
+                Total: {contextBasket?.basket?.reduce((a, b) => a + b.price, 0).toFixed(2)}S$
+                <button onClick={() => handleCheckout()} className={"inline-block p-1 px-2 shadow-md ml-2"}>Checkout</button>
             </h4>
         </div>
     );
