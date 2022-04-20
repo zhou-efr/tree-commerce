@@ -2,7 +2,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {useContext} from "react";
 import {BasketContext, UserContext} from "../../../App";
 import {useNavigate} from "react-router-dom";
-import {API_URL} from "../../../Constants/Constants";
 
 export const Checkout = () => {
     const contextBasket = useContext(BasketContext);
@@ -50,8 +49,8 @@ export const Checkout = () => {
                                     amount: total,
                                 }),
                             };
-                            console.log(`${API_URL}/user/checkout/${userContext?.user?.username}`)
-                            fetch(`${API_URL}/user/checkout/${userContext?.user?.username}`, options)
+                            console.log(`http://localhost:8080/user/checkout/${userContext?.user?.username}`)
+                            fetch(`http://localhost:8080/user/checkout/${userContext?.user?.username}`, options)
                                 .then((res) => {
                                     if (res.status === 200) {
                                         // @ts-ignore

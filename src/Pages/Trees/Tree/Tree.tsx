@@ -12,7 +12,7 @@ export const Tree:FC = () => {
     const basketContext = useContext(BasketContext) ;
     const userContext = useContext(UserContext) ;
 
-
+    console.log(tree)
     return (
         <div key={TaxonName} className={"m-1"}>
             {

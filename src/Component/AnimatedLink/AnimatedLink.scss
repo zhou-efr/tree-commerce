@@ -1,4 +1,4 @@
-$delay:50ms;
+$delay:28ms;
 body{
   font-size: 16px;
   background: white;
@@ -7,9 +7,10 @@ body{
 
 .AnimatedLink {
   font-weight: lighter;
-  font-family: SimSun;
+  font-family: Simsun;
   color: black;
-  margin-bottom: -0.1em;
+  margin-bottom:-1em;
+
 
 
   &:hover{
@@ -35,7 +36,7 @@ body{
     font-weight: lighter;
     text-transform: uppercase;
     font-style: normal;
-    margin-right: -0.1em;
+    margin-right: -0.3em;
   }
 
   i:first-child {
@@ -45,10 +46,10 @@ body{
   }
 
   i:last-child{
-    transform: translateX(-100%) scaleX(0) rotate(10deg);
+    transform: translateX(-100%) scaleX(0);
     //background-color: black;
     //color:white;
-    margin-top:-123%;
+    margin-top:-160%;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
   }

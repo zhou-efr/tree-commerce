@@ -9,11 +9,13 @@ interface AnimatedLinkProps {
     notHoverClassName?: string;
     hoverClassName?: string;
     onClick?: () => void;
+    onHover?: () => void;
+    onHoverQuit?: () => void;
     redirect?: string;
     to: string;
 }
 
-export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onClick, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, redirect, children}) => {
+export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onHover, onHoverQuit, onClick, hoverColor, hoverTextColor, notHoverClassName, hoverClassName, to, redirect, children}) => {
     let [active, setActive] = useState(false);
     const navigate = useNavigate();
 
@@ -23,7 +25,11 @@ export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onClick, hoverCol
     let text = children.split('');
 
     return (
-        <NavLink className={({isActive}) => {setActive(isActive); return ""}} to={to} onClick={() => {
+        <NavLink className={({isActive}) => {setActive(isActive); return ""}}
+                 onMouseEnter={onHover}
+                 onMouseLeave={onHoverQuit}
+                 to={to}
+                 onClick={() => {
             if (onClick) {
                 onClick();
             }

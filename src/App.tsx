@@ -182,11 +182,11 @@ const App:FC = () => {
                 <BasketContext.Provider value={contextBasket}>
                     <BrowserRouter>
                         <Routes>
+                            <Route path="/" element={<Home />} />
                             <Route path="/" element={<ToolBar  onLogout={() => onLogout()}/>}>
                                 {
                                     treesLoaded ? (
                                         <>
-                                            <Route index element={<Home />} />
                                             <Route path="login" element={<Login onLogin={user => onLogin(user)}/>} />
                                             <Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />
                                             <Route path="profile" element={<Profile />} />
