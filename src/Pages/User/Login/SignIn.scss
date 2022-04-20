@@ -77,9 +77,14 @@
   align-content: center;
   justify-content: center;
   display: flex;
+  transition: all 0.4s;
   .logoSI
   {
     transform: scale(0.1);
 
+  }
+  &:hover
+  {
+    transform: scale(1.3) ;
   }
 }

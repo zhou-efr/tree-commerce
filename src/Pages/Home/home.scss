@@ -39,7 +39,7 @@
   position: absolute;
   display: flex;
   flex-flow: column;
-  top:60%;
+  top:62%;
   left:14em;
   justify-content: center;
   z-index: 10;
@@ -61,6 +61,7 @@ a{
   left : 60vw;
   transform: scale(1.08);
   z-index: 3;
+  transition-delay: 0ms;
 }
 .redTree{
   position: absolute;
@@ -68,6 +69,7 @@ a{
   bottom:2vh;
   left : 43vw;
   transform: scale(1.08);
+  transition-delay: 100ms;
   z-index: 4;
 }.pinkTree{
   position: absolute;
@@ -75,6 +77,7 @@ a{
   transition: all 10s;
   left : 80vw;
   transform: scale(1.08);
+  transition-delay: 100ms;
   z-index: 4;
 }.pinkLeaf{
   position: absolute;
@@ -82,6 +85,7 @@ a{
   bottom:9vh;
   left : 63vw;
   transform: scale(0.9);
+  transition-delay: 50ms;
   z-index: 2;
 }
 
