@@ -21,7 +21,7 @@ export const Home:FC = () => {
 
     const hoverNav = async (response: any) => {
         setFlashClass("  brightness-500 ");
-        await new Promise(r => setTimeout(r, 300));
+        await new Promise(r => setTimeout(r, 150));
 
         switch (response) {
             case '1':
@@ -94,7 +94,7 @@ export const Home:FC = () => {
                     COLOR
                 </AnimatedLink>
                 <AnimatedLink
-                    to={"/panda"}
+                    to={"/SignIn"}
                     hoverTextColor={"text-white"}
                     hoverColor={"bg-black"}
                     onHover={() => hoverNav("4")}

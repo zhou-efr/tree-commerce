@@ -183,11 +183,11 @@ const App:FC = () => {
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<Home />} />
+                            <Route path="/login" element={<Login onLogin={user => onLogin(user)}/>} />
                             <Route path="/" element={<ToolBar  onLogout={() => onLogout()}/>}>
                                 {
                                     treesLoaded ? (
                                         <>
-                                            <Route path="login" element={<Login onLogin={user => onLogin(user)}/>} />
                                             <Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />
                                             <Route path="profile" element={<Profile />} />
                                             <Route path="cart" element={<Cart />} />
@@ -200,7 +200,6 @@ const App:FC = () => {
                                         </>
                                     ):(
                                         <>
-                                            <Route index element={<Loading />} />
                                             <Route path="*" element={<Loading />} />
                                         </>
                                     )

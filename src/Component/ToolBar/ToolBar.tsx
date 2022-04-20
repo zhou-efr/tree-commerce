@@ -13,7 +13,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
     return (
         <div>
             <div>
-                <NavLink className={({isActive}) => `${isActive ? "font-bold":""} m-1`} to="/">Tree Commerce</NavLink >
+                <NavLink className={({isActive}) => `${isActive ? "scale-110":""} m-1`} to="/">Tree Commerce</NavLink >
                 <nav
                     style={{
                         borderBottom: "solid 1px",

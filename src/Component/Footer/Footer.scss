@@ -1,0 +1,42 @@
+.Footer
+{
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  height: 12vh;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  color:white;
+  font-family: 'Roboto', sans-serif;
+  vertical-align: center;
+  align-items: center;
+  align-self: center;
+  width: 100Vw;
+  .NavLink{
+    margin-bottom: 10px;
+
+    &:hover
+    {
+      text-decoration: underline;
+    }
+  }
+}
+
+.logoF
+{
+  transform: scale(1);
+  margin-top: -1.5em;
+  margin-left: -1em;
+
+  transition: all 0.4s;
+  &:hover
+  {
+    transform: scale(0.9);
+  }
+}
+
+#baliseDeMerde
+{
+  width: 200px;
+}

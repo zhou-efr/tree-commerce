@@ -1,0 +1,85 @@
+.body
+{
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+}
+
+.ContentSI
+{
+  height: 76vh;
+  width: 100vw;
+  background-color: #F3F3F3;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+
+  .TextSI
+  {
+    margin-top: 20px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 110px;
+    line-height: 129px;
+    text-align: center;
+    color: #444444;
+  }
+
+  .rightPart{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    alignment: center;
+    alignment-baseline: center;
+
+    .formm
+    {
+      background-color: white;
+      padding: 1.5em;
+      width: 37.5vw;
+
+      .titleForm
+      {
+        font-family: "Roboto Thin",sans-serif;
+        font-size: 17px;
+        line-height: 33px;
+        letter-spacing: 0.05em;
+        color: #000000;
+        text-transform: uppercase;
+      }
+
+      .buttonText
+      {
+        font-size: 19px;
+        color: #DF0000;
+        font-weight: 450;
+        letter-spacing: 0.05em;
+
+        &:hover
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+#HeaderSI
+{
+  height: 12vh;
+  background-color: white;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  .logoSI
+  {
+    transform: scale(0.1);
+
+  }
+}
