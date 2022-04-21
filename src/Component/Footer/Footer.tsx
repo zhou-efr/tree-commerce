@@ -1,19 +1,19 @@
 import "./Footer.scss";
-import {FC, useState} from "react";
-import {NavLink, useNavigate} from "react-router-dom";
+import {FC} from "react";
+import {NavLink} from "react-router-dom";
 // @ts-ignore
 import logoF from "./logoF.png";
 
 export const Footer:FC = () => {
     return(
-        <div className={"Footer overflow-hidden h-screen"}>
+        <div className={"Footer overflow-hidden "}>
             <NavLink id={"baliseDeMerde"} to={"/"}>
-                <img className={"logoF"} src={logoF}></img>
+                <img className={"logoF"} src={logoF} alt={"logo tree commerce"}></img>
             </NavLink>
-            <NavLink className={"NavLink"} to={"/"}>SHOPPING</NavLink>
-            <NavLink className={"NavLink"} to={"/SignIn"}>ABOUT US</NavLink>
-            <NavLink className={"NavLink"} to={"/"}>CONTACT US</NavLink>
-            <NavLink className={"NavLink"} to={"/"}>CONDITIONS</NavLink>
+            <NavLink className={"navlink"} to={"/"}>SHOPPING</NavLink>
+            <NavLink className={"navlink"} to={"/SignIn"}>ABOUT US</NavLink>
+            <NavLink className={"navlink"} to={"/"}>CONTACT US</NavLink>
+            <NavLink className={"navlink"} to={"/"}>CONDITIONS</NavLink>
         </div>
     )
   

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar-link-box{
+    @apply h-1/5 p-4 uppercase;
+  }
+  .navbar-link{
+    @apply inline-block relative w-fit;
+  }
+  .navbar-link:after{
+    content: '';
+    position: absolute;
+    width: 80%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 10%;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+  }
+  .navbar-link:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
+  }
+  .navbar-link-hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
+  }
+
+  .fadeOut{
+    visibility: hidden;
+    opacity:0;
+    transition: visibility 0s 0.5s, opacity 0.5s ease-in;
+  }
+
+  .fadeIn{
+    opacity:1;
+    transition: opacity 0.5s 0.5s;
+  }
+}

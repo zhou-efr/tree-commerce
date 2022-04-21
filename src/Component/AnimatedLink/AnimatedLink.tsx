@@ -25,7 +25,7 @@ export const AnimatedLink:FC<AnimatedLinkProps> = ({className, onHover, onHoverQ
     let text = children.split('');
 
     return (
-        <NavLink className={({isActive}) => {setActive(isActive); return ""}}
+        <NavLink className={({isActive}) => {setActive(isActive); return "a"}}
                  onMouseEnter={onHover}
                  onMouseLeave={onHoverQuit}
                  to={to}
