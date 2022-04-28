@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar-link-box-2 {
+    @apply h-1/5 p-4 uppercase;
+  }
+
+  .navbar-link-2 {
+    @apply inline-block relative w-fit;
+  }
+
+  .navbar-link-2:after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 10%;
+    margin-bottom: 3%;
+    transform-origin: bottom center;
+    transition: all 0.6s ease-out;
+  }
+
+  .navbar-link-2:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
+  }
+}
+
+.contentIN
+{
+  //border-right: 2px solid black;
+  transition: all 0.4s;
+
+}
+
+.textNetwork
+{
+  transition: all 0.4s;
+}
+
+.imageNet
+{
+  transition: opacity 0.4s;
+}
+
+.TN
+{
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 50px;
+  color: black;
+  transition: all 1s;
+  letter-spacing: 0.08em;
+}

@@ -1,6 +1,7 @@
 import React, {createContext, FC, useEffect} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./Pages/Home";
+import {Contact} from "./Pages/Contact";
 import {Login, Profile, Register} from "./Pages/User";
 import {Tree, Trees} from "./Pages/Trees";
 import {NotFound} from "./Pages/Miscellaneous";
@@ -188,6 +189,7 @@ const App:FC = () => {
                                 {
                                     treesLoaded ? (
                                         <>
+                                            <Route path="contact" element={<Contact/>}/>
                                             <Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />
                                             <Route path="profile" element={<Profile />} />
                                             <Route path="cart" element={<Cart />} />
@@ -217,4 +219,7 @@ export default App;
 export {UserContext};
 export {ProductContext};
 export {BasketContext};
+
+
+
 export {Loading};

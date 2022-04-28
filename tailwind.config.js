@@ -11,10 +11,9 @@ module.exports = {
       brightness: {
         500:'500',
       },
-      transitionDuration: {
-        '10000': '10000ms',
-      }
-
+      // scale:{
+      //   115:'115',
+      // }
     },
     },
   plugins: [],

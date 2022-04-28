@@ -59,9 +59,6 @@ export const Home:FC = () => {
 
     }
 
-    const flash = () => {
-      greenTree.classList.add('flash');
-    }
     return (
         <div className={"relative overflow-hidden h-screen"}>
             <div className={"tagName"}>THE WEBSITE THAT ALLIES TREES AND FASHION</div>
@@ -85,7 +82,7 @@ export const Home:FC = () => {
                     COLLECTION
                 </AnimatedLink>
                 <AnimatedLink
-                    to={"/panda"}
+                    to={"/contact"}
                     hoverTextColor={"text-white"}
                     hoverColor={"bg-black"}
                     onHover={() => hoverNav("3")}
@@ -208,6 +205,7 @@ export const Home:FC = () => {
 
             <div className={"streakOne streak2 absolute bg-none"}/>
             <div className={"streakTwo streak2 absolute bg-none"}/>
+            <div className={"streakThree streak2 absolute bg-none"}/>
         </div>
     );
 }

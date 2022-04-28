@@ -1,8 +1,6 @@
 .Footer
 {
   background-color: black;
-  position: absolute;
-  bottom: 0;
   height: 12vh;
   display: flex;
   flex-flow: row;
@@ -18,7 +16,7 @@
 
     &:hover
     {
-      text-decoration: underline;
+      //text-decoration: underline;
     }
   }
 }
@@ -26,7 +24,7 @@
 .logoF
 {
   transform: scale(1);
-  margin-top: -1.5em;
+  margin-top: 0em;
   margin-left: -1em;
 
   transition: all 0.4s;

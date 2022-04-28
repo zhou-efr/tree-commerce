@@ -10,10 +10,10 @@ export const Footer:FC = () => {
             <NavLink id={"baliseDeMerde"} to={"/"}>
                 <img className={"logoF"} src={logoF} alt={"logo tree commerce"}></img>
             </NavLink>
-            <NavLink className={"navlink"} to={"/"}>SHOPPING</NavLink>
-            <NavLink className={"navlink"} to={"/SignIn"}>ABOUT US</NavLink>
-            <NavLink className={"navlink"} to={"/"}>CONTACT US</NavLink>
-            <NavLink className={"navlink"} to={"/"}>CONDITIONS</NavLink>
+            <NavLink className={"navlink navbar-link after:bg-white"} to={"/"}>SHOPPING</NavLink>
+            <NavLink className={"navlink navbar-link after:bg-white"} to={"/SignIn"}>ABOUT US</NavLink>
+            <NavLink className={"navlink navbar-link after:bg-white"} to={"/"}>CONTACT US</NavLink>
+            <NavLink className={"navlink navbar-link after:bg-white"} to={"/"}>CONDITIONS</NavLink>
         </div>
     )
   

@@ -14,7 +14,7 @@
   font-weight: 400;
   font-size: 40px;
   font-family: 'Roboto', sans-serif;
-  margin-left: 17px;
+  margin-left: 6vw;
   margin-top:-3px;
 }
 
@@ -29,10 +29,17 @@
 .streakTwo{
   width: 110vw;
   height: 110vh;
-  left : 80vw;
+  left : 95vw;
   top:-5vh;
   z-index: 0;
+}
 
+.streakThree{
+  width: 110vw;
+  height: 110vh;
+  left : 5vw;
+  top:-5vh;
+  z-index: 0;
 }
 
 .navBarHome{
