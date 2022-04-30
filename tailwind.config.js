@@ -11,9 +11,9 @@ module.exports = {
       brightness: {
         500:'500',
       },
-      // scale:{
-      //   115:'115',
-      // }
+      fontFamily: {
+        dreaming: ["Dreaming In The Moonlight", "cursive"],
+      },
     },
     },
   plugins: [],

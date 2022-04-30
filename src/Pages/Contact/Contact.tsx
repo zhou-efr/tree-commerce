@@ -13,7 +13,7 @@ import treeTwitter from "./treeTwitter.png";
 
 export const Contact:FC = () => {
         return (
-        <div>
+        <div className={"overflow-x-hidden"}>
             <div className={"Contact w-screen"}>
                 <ImageNetwork name={"LinkedIn"} width={"25%"} larger={"150"} urlImage={treeLinkedin} linkNetwork={"https://www.linkedin.com/"}/>
                 <ImageNetwork name={"Facebook"} width={"25%"} larger={"125"} urlImage={treeFacebook} linkNetwork={"https://dragonflight.blizzard.com/fr-fr/"}/>
