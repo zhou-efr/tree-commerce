@@ -62,11 +62,11 @@ export const Home:FC = () => {
     return (
         <div className={"relative overflow-hidden h-screen"}>
             <div className={"tagName"}>THE WEBSITE THAT ALLIES TREES AND FASHION</div>
-            <img className={"logo"} src={logo}/>
+            <img className={"logo"} src={logo} alt={"Tree-Commerce logo"}/>
 
             <div className={"navBarHome"}>
                 <AnimatedLink
-                    to={"/panda"}
+                    to={"/shopping-page"}
                     hoverTextColor={"text-white"}
                     hoverColor={"bg-black"}
                     onHover={() => hoverNav("1")}
@@ -74,7 +74,7 @@ export const Home:FC = () => {
                 >
                     SHOPPING
                 </AnimatedLink>
-                <AnimatedLink to={"/panda"} hoverTextColor={"text-white"}
+                <AnimatedLink to={"/shopping-page?filter=collection"} hoverTextColor={"text-white"}
                               hoverColor={"bg-black"}
                               onHover={() => hoverNav("2")}
                               onHoverQuit={() => hoverNav("0")}
@@ -113,7 +113,7 @@ export const Home:FC = () => {
                       fill="url(#pattern0)"/>
                 <defs>
                     <filter id="filter0_d_79_129" x="0.485352" y="0.536926" width="391.029" height="493.926"
-                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            filterUnits="userSpaceOnUse" >
                         <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                        result="hardAlpha"/>
@@ -139,8 +139,8 @@ export const Home:FC = () => {
                 <rect x="30.0195" y="35.6072" width="246.368" height="296.157" transform="rotate(-2.46315 30.0195 35.6072)" fill="white"/>
                 <rect x="30.0195" y="35.6072" width="246.368" height="296.157" transform="rotate(-2.46315 30.0195 35.6072)" fill="url(#pattern1)"/>
                 <defs>
-                    <filter id="filter0_d_0_1" x="0.216797" y="0" width="321.545" height="415.93" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="filter0_d_0_1" x="0.216797" y="0" width="321.545" height="415.93" filterUnits="userSpaceOnUse" >
+                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                         <feOffset dy="4"/>
                         <feGaussianBlur stdDeviation="10"/>
@@ -162,8 +162,8 @@ export const Home:FC = () => {
                 <rect x="28.8955" y="25.335" width="204.883" height="246.288" transform="rotate(-0.515164 28.8955 25.335)" fill="white"/>
                 <rect x="28.8955" y="25.335" width="204.883" height="246.288" transform="rotate(-0.515164 28.8955 25.335)" fill="url(#pattern3)"/>
                 <defs>
-                    <filter id="filter0_d_0_1" x="0.978516" y="0.277222" width="264.021" height="345.376" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="filter0_d_0_1" x="0.978516" y="0.277222" width="264.021" height="345.376" filterUnits="userSpaceOnUse" >
+                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                         <feOffset dy="4"/>
                         <feGaussianBlur stdDeviation="10"/>
@@ -185,8 +185,8 @@ export const Home:FC = () => {
                 <rect x="307.55" y="32.0319" width="314.29" height="377.805" transform="rotate(37.7168 307.55 32.0319)" fill="white"/>
                 <rect x="307.55" y="32.0319" width="314.29" height="377.805" transform="rotate(37.7168 307.55 32.0319)" fill="url(#pattern4)"/>
                 <defs>
-                    <filter id="filter0_d_0_1" x="0" y="0" width="593.261" height="615.839" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="filter0_d_0_1" x="0" y="0" width="593.261" height="615.839" filterUnits="userSpaceOnUse" >
+                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                         <feOffset dy="4"/>
                         <feGaussianBlur stdDeviation="10"/>

@@ -2,7 +2,7 @@ import React, {createContext, FC, useEffect} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./Pages/Home";
 import {Contact} from "./Pages/Contact";
-import {Login, Profile, Register} from "./Pages/User";
+import {Login, Profile} from "./Pages/User";
 import {Tree, Trees} from "./Pages/Trees";
 import {NotFound} from "./Pages/Miscellaneous";
 import {ToolBar} from "./Component/ToolBar/ToolBar";
@@ -42,9 +42,17 @@ interface userContextType {
 interface TreeType {
     TaxonName: string;
     Author: string;
+    continent: string;
+    color: string;
     picture: string;
-    description: string;
+    picture_author: string;
+    picture_author_link: string;
+    picture_link: string;
+    season: string;
+    life_expectancy: string;
+    collection_name: string;
     price: number;
+    description: string;
 }
 interface treeContextType {
     trees: TreeType[] | null;
@@ -133,14 +141,14 @@ const App:FC = () => {
 
     useEffect( () => {
         const fetchData = async () => {
-            const tempTrees = await fetch(`${API_URL}/trees/random/64`);
+            const tempTrees = await fetch(`${API_URL}/trees`);
             // console.log(tempTrees);
             const tempTreesJson = await tempTrees.json();
             // console.log(tempTreesJson);
             for (let i = 0; i < tempTreesJson.length; i++){
-                tempTreesJson[i].image = `https://picsum.photos/400`;
+                // tempTreesJson[i].picture = `https://picsum.photos/400`;
                 tempTreesJson[i].description = 'lore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-                tempTreesJson[i].price = Math.floor(Math.random() * (10000)) + 99 + Math.round(Math.random()*100)/100;
+                // tempTreesJson[i].price = Math.floor(Math.random() * (10000)) + 99 + Math.round(Math.random()*100)/100;
             }
             setTreesLoaded(true);
             setTrees({trees: tempTreesJson});
@@ -190,11 +198,11 @@ const App:FC = () => {
                                 {
                                     treesLoaded ? (
                                         <>
-                                            <Route path="shoppingPage" element={<ShoppingPage/>}/>
+                                            <Route path="shopping-page" element={<ShoppingPage/>}/>
                                             <Route path="contact" element={<Contact/>}/>
-                                            <Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />
+                                            {/*<Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />*/}
                                             <Route path="profile" element={<Profile />} />
-                                            <Route path="cart" element={<Cart />} />
+                                            <Route path="my-cart" element={<Cart />} />
                                             <Route path="checkout" element={<Checkout />} />
                                             <Route path={"Trees"}>
                                                 <Route index element={<Trees />}/>
@@ -222,6 +230,6 @@ export {UserContext};
 export {ProductContext};
 export {BasketContext};
 
-
+export type {TreeType};
 
 export {Loading};

@@ -1,9 +1,9 @@
-import React, {FC, useState} from "react";
+import React, {FC, useContext, useEffect, useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {API_URL} from "../../../Constants/Constants";
 import {Footer} from "../../../Component";
 import "./SignIn.scss";
-import { Loading } from "../../../App";
+import {Loading, UserContext} from "../../../App";
 
 interface LoginProps {
     onLogin: (user: any) => void;
@@ -14,7 +14,15 @@ export const Login:FC<LoginProps> = (props) => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
+    const contextUser = useContext(UserContext);
     let navigate = useNavigate();
+
+    useEffect(() => {
+        if (contextUser?.user) {
+            navigate("/profile");
+        }
+    }, [contextUser?.user, navigate]);
+
 
     const IncludeCredentialString:RequestCredentials = 'include';
 

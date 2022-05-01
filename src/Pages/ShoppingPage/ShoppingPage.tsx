@@ -1,29 +1,59 @@
-import {FC, useState} from "react";
+import {FC, useContext, useEffect, useState,} from "react";
 import {Item} from "./Item/Item";
-// @ts-ignore
-import pinktree from "./pinkTree.png";
-// @ts-ignore
-import palmier from "./palmier.png";
-// @ts-ignore
-import noLeaf from "./noLeaf.png";
-// @ts-ignore
-import oldtree from "./oldtree.png";
 import {Footer} from "../../Component";
 import "./ShoppingPage.scss";
+import {ProductContext, TreeType} from "../../App";
+import {useSearchParams} from "react-router-dom";
+
 
 
 export const ShoppingPage:FC = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams);
+    const filter = searchParams.get('filter');
+    const filterParameter = searchParams.get('value');
+    const above = searchParams.get('above');
+    const below = searchParams.get('below');
+    const trees = useContext(ProductContext).trees || [];
+    const [filteredTrees, setFilteredTrees] = useState<TreeType[]>(trees || []);
+
+    useEffect(() => {
+        document.title = "Shopping Page";
+    }, []);
+
+    useEffect(() => {
+        console.log(filter, filterParameter, above, below);
+        switch (filter) {
+            case "Continent":
+                setFilteredTrees(trees.filter(tree => tree.continent.toLowerCase() === filterParameter?.toLowerCase()));
+                break;
+            case "Season":
+                setFilteredTrees(trees.filter(tree => tree.season.toLowerCase() === filterParameter?.toLowerCase()));
+                break;
+            case "Life Expectancy":
+                setFilteredTrees(trees.filter(tree => tree.life_expectancy.toLowerCase() === filterParameter?.toLowerCase()));
+                break;
+            case "Price":
+                setFilteredTrees(trees.filter(tree => tree.price >= Number(above) && tree.price <= Number(below)));
+                break;
+            case "Color":
+                setFilteredTrees(trees.filter(tree => tree.color.toLowerCase() === filterParameter?.toLowerCase()));
+                break;
+            case "Collection":
+                setFilteredTrees(trees.filter(tree => tree.collection_name.toLowerCase() === filterParameter?.toLowerCase()));
+                break;
+            default:
+                setFilteredTrees(trees);
+                break;
+        }
+    }, [filter, trees, filterParameter, above, below]);
+
     return (
-    <div className={"ShoppingPage w-screen"}>
-        <div className={"flex w-fill -mt-px overflow-x-hidden grid-cols-4"}>
-            <Item picture={pinktree} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={palmier} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={oldtree} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={noLeaf} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={pinktree} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={palmier} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={oldtree} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
-            <Item picture={noLeaf} nameTree={"TreeName"} lifeExpect={"15 years"} price={"99.99€"} season={"Autumn" }/>
+    <div className={"ShoppingPage w-screen overflow-x-hidden"}>
+        <div className={"flex w-full -mt-px overflow-x-hidden grid grid-cols-4"}>
+            {filteredTrees?.map((tree, index) =>
+                <Item key={index} tree={tree}/>
+            )}
         </div>
         <Footer/>
     </div>

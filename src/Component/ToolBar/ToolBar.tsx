@@ -1,4 +1,4 @@
-import {FC, useContext, useEffect, useState} from "react";
+import {FC, useContext, useEffect, useState, useRef} from "react";
 import {Link, NavLink, Outlet, useLocation} from "react-router-dom";
 import {UserContext} from "../../App";
 import "./ToolBar.scss";
@@ -15,8 +15,33 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
     const [defaultAnimationEnd, setDefaultAnimationEnd] = useState(false);
     const [shoppingAnimationEnd, setShoppingAnimationEnd] = useState(true);
     const [open, setOpen] = useState(true);
+
     const location = useLocation();
     const isAuthenticated = context?.user !== null;
+
+    const prevScrollY = useRef(0);
+
+    const [goingUp, setGoingUp] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            if (prevScrollY.current !== currentScrollY ) {
+                setGoingUp(true);
+                setOpen(true);
+            }else {
+                setGoingUp(false);
+            }
+
+            prevScrollY.current = currentScrollY;
+            console.log(goingUp, currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [goingUp]);
+
     useEffect(() => {
         setDefaultEntered(true);
         setShoppingEntered(false);
@@ -65,7 +90,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                         <div className={`flex border-t-2 border-b-2 border-black w-full ${open ? "h-16" : `h-112`}`}>
                             <div onClick={() => setOpen(false)} className={`ml-3 group flex pl-2 items-center justify-start gap-2 ${open ? "" : "hidden"}`}>
                                 <p className={"barTrigger uppercase"}>
-                                    Shopping
+                                    {location.pathname.split("/")[location.pathname.split("/").length - 1].replace("-", " ")}
                                 </p>
                                 <svg className={"transition-all hidden duration-300 group-hover:-rotate-90"} width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M16.0271 14.5588L28.6458 1.94009L27.2316 0.525873L14.6129 13.1445L1.99429 0.525926L0.580078 1.94014L13.1987 14.5588L13.1664 14.5911L14.5806 16.0053L14.6129 15.973L14.6453 16.0054L16.0595 14.5912L16.0271 14.5588Z" fill="black"/>
@@ -86,13 +111,13 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                                         <p className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"}> Shopping</p>
                                     </div>
                                     <div className={"navbar-link-box border-b-2 border-black group"}>
-                                        <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/"}> About Us</Link>
+                                        <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/About-us"}> About Us</Link>
                                     </div>
                                     <div className={"navbar-link-box border-b-2 border-black group"}>
                                         <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/contact"}> Contact Us</Link>
                                     </div>
                                     <div className={"navbar-link-box group"}>
-                                        <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/"}> My Cart</Link>
+                                        <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/my-cart"}> My Cart</Link>
                                     </div>
                                 </div>
                                 <Shopping
