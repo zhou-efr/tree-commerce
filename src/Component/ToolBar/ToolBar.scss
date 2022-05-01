@@ -40,3 +40,16 @@
     transition: opacity 0.5s 0.5s;
   }
 }
+
+@keyframes slide {
+  0%,100% {margin-left : 0;}
+  50% {margin-left : 20px;}
+}
+
+.barTrigger{
+  &:hover
+  {
+    animation: slide 800ms ease-in-out;
+  }
+}
+
