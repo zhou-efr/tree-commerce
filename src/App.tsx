@@ -66,6 +66,7 @@ interface basketContextType {
     basket: TreeType[] | null;
     setBasket: (basket: TreeType[], user: UserType | null | undefined) => void;
     addToCart: (tree: TreeType, basket: TreeType[] | null, user: UserType | null | undefined) => void;
+    removeFromCart: (index: number, basket: TreeType[] | null, user: UserType | null | undefined) => void;
 }
 
 const UserContext = createContext<userContextType | null>(null);
@@ -113,16 +114,28 @@ const App:FC = () => {
                     throw err;
                 });
                 const basketResponseJson = await basketResponse.json();
+                setContextUser({
+                    user: {
+                        ...currentUser,
+                        basket: basketResponseJson
+                    }
+                });
+                localStorage.setItem('user', JSON.stringify({
+                    ...currentUser,
+                    basket: basketResponseJson
+                }));
                 setContextBasket({
                     basket: basketResponseJson,
                     setBasket: contextBasket.setBasket,
-                    addToCart: contextBasket.addToCart
+                    addToCart: contextBasket.addToCart,
+                    removeFromCart: contextBasket.removeFromCart
                 });
             } else {
                 setContextBasket({
                     basket: basket,
                     setBasket: contextBasket.setBasket,
-                    addToCart: contextBasket.addToCart
+                    addToCart: contextBasket.addToCart,
+                    removeFromCart: contextBasket.removeFromCart
                 });
             }
         },
@@ -134,9 +147,24 @@ const App:FC = () => {
             if (basket) {
                 newBasket = [...basket, tree];
             }
+            alert(`${tree.TaxonName} added to basket`);
             // console.log(newBasket);
             // console.log("end add to cart");
             contextBasket.setBasket(newBasket, currentUser);
+        },
+        removeFromCart: async (index, basket: TreeType[] | null, currentUser) => {
+            if (basket) {
+                if (index >= 0 && index < basket.length) {
+                    let newBasket = [...basket];
+                    newBasket.splice(index, 1);
+                    alert(`${basket[index].TaxonName} removed from basket`);
+                    contextBasket.setBasket(newBasket, currentUser);
+                } else {
+                    alert("Invalid index");
+                }
+            }else {
+                alert("No basket to remove from");
+            }
         }
     });
 
@@ -158,18 +186,19 @@ const App:FC = () => {
         fetchData().catch(err => console.log(err));
     }, []);
 
-    const onLogin = (loggedUser: any) => {
+    const onLogin = (loggedUser: any, alrt = true) => {
         if (loggedUser) {
             // console.log("logged user in");
             // console.log(loggedUser);
             setContextUser({user: loggedUser});
+            localStorage.setItem('user', JSON.stringify(loggedUser));
             // console.log("contextUser");
             // console.log(contextUser);
-
-            if (loggedUser?.basket?.length && loggedUser?.basket.length > 0) {
+            if (alrt) {
+                alert("Logged in");
+            }
+            if (loggedUser?.basket && loggedUser?.basket.length > 0) {
                 contextBasket.setBasket(loggedUser.basket, loggedUser);
-            }else if (contextBasket?.basket?.length && contextBasket?.basket.length > 0) {
-                contextBasket.setBasket(contextBasket.basket, loggedUser);
             }
         }
     };
@@ -184,8 +213,17 @@ const App:FC = () => {
             console.log(error);
         });
         setContextUser({user: null});
+        localStorage.removeItem('user');
+        alert("Logged out");
         contextBasket.setBasket([], null);
     };
+    
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user') as string);
+            onLogin(user, false);
+        }
+    }, []);
     
     return (
         <UserContext.Provider value={contextUser}>

@@ -34,7 +34,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
             }
 
             prevScrollY.current = currentScrollY;
-            console.log(goingUp, currentScrollY);
+            // console.log(goingUp, currentScrollY);
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
