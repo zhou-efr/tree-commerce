@@ -37,7 +37,7 @@ export const Login:FC<LoginProps> = (props) => {
             }
         };
 
-        const user_response = await fetch(url, options).catch(err => {throw err;});
+        const user_response = await fetch(url, options).catch(err => {alert('Registration failed : '.concat(err));throw err;});
         const user = await user_response?.json();
         if (!user) {
             alert('Registration failed');
@@ -67,8 +67,8 @@ export const Login:FC<LoginProps> = (props) => {
             })
         };
 
-        await fetch(url, options).catch(err => {throw err;});
-        await loadUser().catch(err => {throw err;});
+        await fetch(url, options).catch(err => {alert('Registration failed : '.concat(err));throw err;});
+        await loadUser().catch(err => {alert('Registration failed : '.concat(err));throw err;});
         setLoading(false);
         navigate('/');
     };
@@ -88,8 +88,8 @@ export const Login:FC<LoginProps> = (props) => {
             })
         };
 
-        await fetch(url, options).catch(err => {throw err;});
-        await loadUser().catch(err => {throw err;});
+        await fetch(url, options).catch(err => {alert('Registration failed : '.concat(err));throw err;});
+        await loadUser().catch(err => {alert('Registration failed : '.concat(err));throw err;});
         setLoading(false);
         navigate('/');
     };
