@@ -224,6 +224,7 @@ const App:FC = () => {
             const user = JSON.parse(localStorage.getItem('user') as string);
             onLogin(user, false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     return (

@@ -8,12 +8,14 @@ import {useSearchParams} from "react-router-dom";
 
 
 export const ShoppingPage:FC = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
     console.log(searchParams);
     const filter = searchParams.get('filter');
     const filterParameter = searchParams.get('value');
     const above = searchParams.get('above');
     const below = searchParams.get('below');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const trees = useContext(ProductContext).trees || [];
     const [filteredTrees, setFilteredTrees] = useState<TreeType[]>(trees || []);
 
