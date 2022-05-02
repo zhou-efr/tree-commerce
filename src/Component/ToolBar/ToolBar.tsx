@@ -89,7 +89,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                         </div>
                         <div className={`flex border-t-2 border-b-2 border-black w-full ${open ? "h-16" : `h-112`}`}>
                             <div onClick={() => setOpen(false)} className={`ml-3 group flex pl-2 items-center justify-start gap-2 ${open ? "" : "hidden"}`}>
-                                <p className={"group-hover:translate-x-1 duration-300 w-max uppercase"}>
+                                <p className={"cursor-pointer group-hover:translate-x-1 duration-300 w-max uppercase"}>
                                     {location.pathname.split("/")[location.pathname.split("/").length - 1].replace("-", " ")}
                                 </p>
                                 <svg className={"-ml-2 scale-50 transition-all -rotate-90 delay-75 duration-500 group-hover:translate-x-1 group-hover:-rotate-0"} width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
