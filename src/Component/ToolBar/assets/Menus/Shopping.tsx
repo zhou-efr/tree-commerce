@@ -1,7 +1,7 @@
 import {FC} from "react";
 // @ts-ignore
 import img4 from "../img/img4.png";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 interface ShoppingProps {
     entered: boolean;
@@ -140,7 +140,7 @@ export const Shopping:FC<ShoppingProps> = ({ entered, animatEnd, onHoverEnd, onH
                 </div>
             </div>
             <div className={"flex flex-col w-1/3 pl-3 py-3 -mt-2"}>
-                <p className={"text-normal font-medium mb-1"}>Special collection : Trees of Kenya</p>
+                <Link className={"mb-2 navbar-link after:bg-black text-normal font-medium mb-1 "} to={"/shopping-page?filter=Collection&value=Kenya"}>Special collection : Trees of Kenya</Link>
                 <img className={"w-2/3"} src={img4} alt={"tree"}/>
             </div>
         </div>

@@ -108,7 +108,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                                         // }}
                                         onMouseEnter={() => handleMouseEnterShopping()}
                                     >
-                                        <p className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"}> Shopping</p>
+                                        <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/shopping"}> Shopping</Link>
                                     </div>
                                     <div className={"navbar-link-box border-b-2 border-black group"}>
                                         <Link className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/About-us"}> About Us</Link>

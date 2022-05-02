@@ -27,7 +27,7 @@ export const Item:FC<itemProps> = ({tree, key}) => {
                   <div className={"mt-16 font-dreaming text-6xl"}>S${(tree.price/100).toFixed(2)}</div>
               </div>
               <div onClick={() => basketContext?.addToCart(tree, basketContext?.basket, userContext?.user)} className={"flex justify-center items-center"}>
-                  <div className={"mt-10 buttonText tracking-wider uppercase text-underline-red navbar-link after:bg-underline-red py-2 px-9 focus:outline-none"}>Add to Cart</div>
+                  <div className={"cursor-pointer mt-10 buttonText tracking-wider uppercase text-underline-red navbar-link after:bg-underline-red py-2 px-9 focus:outline-none"}>Add to Cart</div>
               </div>
           </div>
       </div>
