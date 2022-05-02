@@ -26,7 +26,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            if (prevScrollY.current !== currentScrollY ) {
+            if (prevScrollY.current <= currentScrollY ) {
                 setGoingUp(true);
                 setOpen(true);
             }else {
