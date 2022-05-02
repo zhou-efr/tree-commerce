@@ -66,7 +66,7 @@ export const Home:FC = () => {
 
             <div className={"navBarHome"}>
                 <AnimatedLink
-                    to={"/shopping-page"}
+                    to={"/shopping"}
                     hoverTextColor={"text-white"}
                     hoverColor={"bg-black"}
                     onHover={() => hoverNav("1")}

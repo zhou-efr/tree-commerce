@@ -14,7 +14,7 @@ export const Item:FC<itemProps> = ({tree, key}) => {
     if (!tree) return <></>;
 
     return(
-      <div key={key} className={"streak2 imageTree group relative mr-4 ml-2 h-4/5"}>
+      <div key={key} className={"bg-white -my-px streak2 imageTree group relative mr-4 ml-2 h-4/5"}>
           <a href={tree.picture_link} target={"_blank"} rel="noreferrer">
               <img className={`group-hover:opacity-0 absolute top-0 opacity-80 h-full object-cover p-5 transition-all duration-500`} src={tree.picture} alt={tree.picture_author}/>
           </a>

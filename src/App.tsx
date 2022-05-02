@@ -9,6 +9,7 @@ import {ToolBar} from "./Component/ToolBar/ToolBar";
 import { Cart, Checkout } from "./Pages/Shop";
 import { API_URL } from "./Constants/Constants";
 import {ShoppingPage} from "./Pages/ShoppingPage";
+import {HomeShopping} from "./Pages/HomeShopping";
 
 interface OrderType {
     payer_id: string;
@@ -198,6 +199,7 @@ const App:FC = () => {
                                 {
                                     treesLoaded ? (
                                         <>
+                                            <Route path="shopping" element={<HomeShopping/>}/>
                                             <Route path="shopping-page" element={<ShoppingPage/>}/>
                                             <Route path="contact" element={<Contact/>}/>
                                             {/*<Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />*/}

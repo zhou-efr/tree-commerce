@@ -89,10 +89,10 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                         </div>
                         <div className={`flex border-t-2 border-b-2 border-black w-full ${open ? "h-16" : `h-112`}`}>
                             <div onClick={() => setOpen(false)} className={`ml-3 group flex pl-2 items-center justify-start gap-2 ${open ? "" : "hidden"}`}>
-                                <p className={"barTrigger uppercase"}>
+                                <p className={"group-hover:translate-x-1 duration-300 w-max uppercase"}>
                                     {location.pathname.split("/")[location.pathname.split("/").length - 1].replace("-", " ")}
                                 </p>
-                                <svg className={"transition-all hidden duration-300 group-hover:-rotate-90"} width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className={"-ml-2 scale-50 transition-all -rotate-90 delay-75 duration-500 group-hover:translate-x-1 group-hover:-rotate-0"} width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M16.0271 14.5588L28.6458 1.94009L27.2316 0.525873L14.6129 13.1445L1.99429 0.525926L0.580078 1.94014L13.1987 14.5588L13.1664 14.5911L14.5806 16.0053L14.6129 15.973L14.6453 16.0054L16.0595 14.5912L16.0271 14.5588Z" fill="black"/>
                                 </svg>
                             </div>
