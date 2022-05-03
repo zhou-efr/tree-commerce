@@ -39,7 +39,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "tree-commerce.ice-efrei.fr",
+  "homepage": "https://tree-commerce.ice-efrei.fr/",
   "browserslist": {
     "production": [
       ">0.2%",
