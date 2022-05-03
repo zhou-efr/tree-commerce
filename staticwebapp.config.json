@@ -1,0 +1,40 @@
+{
+  "routes": [
+    {
+      "route": "/"
+    },
+    {
+      "route": "/login"
+    },
+    {
+      "route": "/shopping"
+    },
+    {
+      "route": "/about-us"
+    },
+    {
+      "route": "/shopping-page"
+    },
+    {
+      "route": "/contact"
+    },
+    {
+      "route": "/profile"
+    },
+    {
+      "route": "/my-cart"
+    },
+    {
+      "route": "/checkout"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html"
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  }
+}
