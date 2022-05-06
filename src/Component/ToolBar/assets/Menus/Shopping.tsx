@@ -1,7 +1,7 @@
 import {FC} from "react";
 // @ts-ignore
 import img4 from "../img/img4.png";
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 interface ShoppingProps {
     entered: boolean;

@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import "./Contact.scss";
 import {Footer} from "../../Component";
 import {ImageNetwork} from "./ImageNetwork/ImageNetwork";

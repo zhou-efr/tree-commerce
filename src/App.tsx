@@ -1,5 +1,5 @@
 import React, {createContext, FC, useEffect} from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {Home} from "./Pages/Home";
 import {Contact} from "./Pages/Contact";
 import {Login, Profile} from "./Pages/User";
@@ -224,43 +224,42 @@ const App:FC = () => {
             const user = JSON.parse(localStorage.getItem('user') as string);
             onLogin(user, false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     return (
         <UserContext.Provider value={contextUser}>
             <ProductContext.Provider value={trees}>
                 <BasketContext.Provider value={contextBasket}>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/login" element={<Login onLogin={user => onLogin(user)}/>} />
-                            <Route path="/" element={<ToolBar  onLogout={() => onLogout()}/>}>
-                                {
-                                    treesLoaded ? (
-                                        <>
-                                            <Route path="shopping" element={<HomeShopping/>}/>
-                                            <Route path="about-us" element={<AboutUs/>}/>
-                                            <Route path="shopping-page" element={<ShoppingPage/>}/>
-                                            <Route path="contact" element={<Contact/>}/>
-                                            {/*<Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />*/}
-                                            <Route path="profile" element={<Profile />} />
-                                            <Route path="my-cart" element={<Cart />} />
-                                            <Route path="checkout" element={<Checkout />} />
-                                            <Route path={"Trees"}>
-                                                <Route index element={<Trees />}/>
-                                                <Route path=":TaxonName" element={<Tree />} />
-                                            </Route>
-                                            <Route path="*" element={<NotFound />} />
-                                        </>
-                                    ):(
-                                        <>
-                                            <Route path="*" element={<Loading />} />
-                                        </>
-                                    )
-                                }
-                            </Route>
-                        </Routes>
-                    </BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login onLogin={user => onLogin(user)}/>} />
+                        <Route path="/" element={<ToolBar  onLogout={() => onLogout()}/>}>
+                            {
+                                treesLoaded ? (
+                                    <>
+                                        <Route path="shopping" element={<HomeShopping/>}/>
+                                        <Route path="about-us" element={<AboutUs/>}/>
+                                        <Route path="shopping-page" element={<ShoppingPage/>}/>
+                                        <Route path="contact" element={<Contact/>}/>
+                                        {/*<Route path="register" element={<Register  onLogin={user => onLogin(user)}/>} />*/}
+                                        <Route path="profile" element={<Profile />} />
+                                        <Route path="my-cart" element={<Cart />} />
+                                        <Route path="checkout" element={<Checkout />} />
+                                        <Route path={"Trees"}>
+                                            <Route index element={<Trees />}/>
+                                            <Route path=":TaxonName" element={<Tree />} />
+                                        </Route>
+                                        <Route path="*" element={<NotFound />} />
+                                    </>
+                                ):(
+                                    <>
+                                        <Route path="*" element={<Loading />} />
+                                    </>
+                                )
+                            }
+                        </Route>
+                    </Routes>
                 </BasketContext.Provider>
             </ProductContext.Provider>
         </UserContext.Provider>
