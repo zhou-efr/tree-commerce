@@ -11,7 +11,6 @@
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.44",
-    "@types/react-slick": "^0.23.8",
     "@types/slick-carousel": "^1.6.37",
     "node-fetch": "^3.2.4",
     "passport": "^0.5.2",
@@ -55,6 +54,7 @@
     "@types/passport": "^1.0.7",
     "@types/passport-google-oauth20": "^2.0.11",
     "@types/react-dom": "^17.0.15",
+    "@types/react-slick": "^0.23.8",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23"

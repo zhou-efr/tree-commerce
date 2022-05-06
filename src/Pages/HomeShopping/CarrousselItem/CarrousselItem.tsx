@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {BasketContext, TreeType, UserContext} from "../../../App";
+import "../../../Component/ToolBar/ToolBar.scss";
 
 
 interface CarrousselItemProps {
@@ -19,7 +20,7 @@ export const CarrousselItem:FC<CarrousselItemProps> = ({tree}) => {
                     <div className={" -mt-12 rotate-30 font-light rotate-12  opacity-30  ml-20 font-dreaming text-underline-red text-9xl"}> S${(tree.price/100).toFixed(2)}</div>
                 </div>
                 <div className={"flex justify-center items-center"}>
-                    <div onClick={() => basketContext?.addToCart(tree, basketContext?.basket, userContext?.user)} className={"cursor-pointer tracking-wider text-lg text-underline-red hover:underline underline-offset-6"}>
+                    <div onClick={() => basketContext?.addToCart(tree, basketContext?.basket, userContext?.user)} className={"cursor-pointer tracking-wider text-underline-red text-lg group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px]"}>
                         Add to Cart
                     </div>
                 </div>

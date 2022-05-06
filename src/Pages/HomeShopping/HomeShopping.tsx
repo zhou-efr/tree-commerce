@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {CarrousselItem} from "./CarrousselItem/CarrousselItem";
 import {NavLink} from "react-router-dom";
-
+import "../../Component/ToolBar/ToolBar.scss";
 import {ProductContext, TreeType} from "../../App";
 import Slider from "react-slick";
 
@@ -35,7 +35,7 @@ export const HomeShopping:FC = () => {
                     <div className={"flex flex-col w-3/5 py-20 px-24"}>
                         <div className={"mt-10 mb-7 tracking-wide text-justify"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a orci justo. Nunc pellentesque augue et arcu commodo, ac porta mi iaculis. Sed et urna eleifend, maximus lorem in, accumsan dui. Pellentesque sit amet laoreet turpis, ac tempor lacus. Nam ut ipsum suscipit, rutrum libero tempor, scelerisque dui. Cras condimentum bibendum lorem, a laoreet dolor aliquam vitae. Etiam ligula mi, sollicitudin non varius nec, pretium sit amet justo. Donec gravida volutpat ex nec rutrum. Integer ut efficitur ante. Aenean imperdiet efficitur suscipit. Ut sed justo nulla. Proin vehicula dolor eget ullamcorper mattis.</div>
                         <div className={"flex justify-end mr-32"}>
-                            <NavLink className={"tracking-wider text-lg text-underline-red hover:underline underline-offset-6"} to={"/shopping-page?filter=Collection&value=Kenya"}>
+                            <NavLink className={"text-underline-red tracking-wider text-lg group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px]"} to={"/shopping-page?filter=Collection&value=Kenya"}>
                                 Check here
                             </NavLink>
                         </div>
@@ -101,7 +101,7 @@ export const HomeShopping:FC = () => {
                     </div>
                     <div className={"z-10 flex-row flex justify-between"}>
                         <div className={"rotate-2 ml-10 -mt-14 font-dreaming text-9xl"}>Tea Party</div>
-                        <NavLink className={"mr-48 mt-14 tracking-wider text-lg text-underline-red hover:underline underline-offset-6"} to={"/shopping-page?filter=Collection&value=Tea%20Party"}>Check here</NavLink>
+                        <NavLink className={"text-underline-red mr-48 mt-14 tracking-wider text-lg group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px]"} to={"/shopping-page?filter=Collection&value=Tea%20Party"}>Check here</NavLink>
 
                     </div>
                 </div>
