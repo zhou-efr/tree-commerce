@@ -39,7 +39,17 @@ export const ShoppingPage:FC = () => {
                 setFilteredTrees(trees.filter(tree => tree.life_expectancy.toLowerCase() === filterParameter?.toLowerCase()));
                 break;
             case "Price":
-                setFilteredTrees(trees.filter(tree => tree.price >= Number(above) && tree.price <= Number(below)));
+                // ['All price', 'Collection', 'For everyone']
+                if (filterParameter?.toLowerCase().includes("all")) {
+                    setFilteredTrees(trees);
+                }
+                if (filterParameter?.toLowerCase().includes("collection")) {
+                    setFilteredTrees(trees.filter(tree => tree.price >= 1000));
+                }
+                if (filterParameter?.toLowerCase().includes("for everyone")) {
+                    setFilteredTrees(trees.filter(tree => tree.price < 1000));
+                }
+                // setFilteredTrees(trees.filter(tree => tree.price >= Number(above) && tree.price <= Number(below)));
                 break;
             case "Color":
                 setFilteredTrees(trees.filter(tree => tree.color.toLowerCase() === filterParameter?.toLowerCase()));
