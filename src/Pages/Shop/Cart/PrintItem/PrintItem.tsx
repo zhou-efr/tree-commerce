@@ -12,7 +12,7 @@ export const PrintItem:FC<PrintItemProps> = ({tree, key, remove}) => {
         <div key={key} className={"-mb-px ml-48 p-5 border-b-2 border-x-2 border-black w-3/5 h-96 "}>
             <div className={"flex h-full flex-row justify-between"}>
                 <div className={"flex h-full flex-col justify-start w-1/2"}>
-                    <img className={"h-full object-cover opacity-90 object-bottom"} src={tree?.picture} alt={tree?.picture_author}/>
+                    <img className={"h-full object-cover aspect-[41/57] opacity-90 object-bottom"} src={tree?.picture} alt={tree?.picture_author}/>
                 </div>
                 <div className={"mt-3 ml-7 mr-5 flex flex-col justify-start tracking-wider w-1/2"}>
                     <div className={"mb-3 flex justify center uppercase text-sm underline underline-offset-4 decoration-underline-red"}>
