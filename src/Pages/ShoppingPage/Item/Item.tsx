@@ -10,7 +10,7 @@ interface itemProps{
 export const Item:FC<itemProps> = ({tree, key}) => {
     const basketContext = useContext(BasketContext) ;
     const userContext = useContext(UserContext) ;
-    const portrait = window.matchMedia("(orientation: portrait)");
+    // const portrait = window.matchMedia("(orientation: portrait)");
 
     if (!tree) return <></>;
 

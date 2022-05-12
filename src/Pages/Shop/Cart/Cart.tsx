@@ -38,10 +38,10 @@ export const Cart:FC = () => {
     }
 
     return (
-        <div className={`h-[79vh] overflow-hidden`}>
+        <div className={`h-[80vh] overflow-hidden`}>
             {
                 basket && basket.length > 0 ?
-                    <div className={`h-[67vh] flex overflow-hidden`}>
+                    <div className={`h-[68vh] flex overflow-hidden`}>
                         <div className={"noscroll overflow-y-scroll w-1/3 border-x-2 border-black"}>
                             {
                                 basket.map((item, index) => {
