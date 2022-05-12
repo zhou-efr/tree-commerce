@@ -54,7 +54,7 @@ export const Cart:FC = () => {
                             <div className={`ml-[62%] border-black border-t-2 border-x-2 -mt-px h-full w-1/4 flex flex-col justify-start items-center`}>
                                 <div className={"text-xl tracking-wider mt-6"}>TOTAL PRICE : </div>
                                 <div className={"text-xl tracking-wider"}>S${((contextBasket?.basket?.reduce((a, b) => a + b.price, 0) || 0)/100).toFixed(2)}</div>
-                                <div onClick={() => handleCheckout()} className={"tracking-widest text-underline-red navbar-link after:bg-underline-red py-1 px-9 focus:outline-none"}>Order now</div>
+                                <div onClick={() => handleCheckout()} className={"cursor-pointer tracking-widest text-underline-red navbar-link after:bg-underline-red py-1 px-9 focus:outline-none"}>Order now</div>
                             </div>
 
                             {/*<div className={"m-3"}>*/}
