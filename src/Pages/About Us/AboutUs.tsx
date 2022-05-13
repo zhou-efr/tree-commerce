@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {Footer} from "../../Component";
 // @ts-ignore
-import logo from "./logo.png";
+import logo from "./assets/img/logo.png";
 
 export const AboutUs:FC= () => {
     return (

@@ -2,7 +2,7 @@ import {FC, useContext, useEffect, useState, useRef} from "react";
 import {Link, NavLink, Outlet, useLocation} from "react-router-dom";
 import {UserContext} from "../../App";
 import "./ToolBar.scss";
-import {Default, MobileShopping, Shopping} from "./assets/Menus";
+import {Default, MobileShopping, Shopping} from "./Menus";
 
 interface ToolBarProps {
     onLogout: () => void;

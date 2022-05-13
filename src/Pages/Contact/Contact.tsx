@@ -1,15 +1,15 @@
 import {FC} from "react";
 import "./Contact.scss";
 import {Footer} from "../../Component";
-import {ImageNetwork} from "./ImageNetwork/ImageNetwork";
+import {ImageNetwork} from "../../Component";
 // @ts-ignore
-import treeLinkedin from "./treeLinkedIn.png";
+import treeLinkedin from "./assets/img/treeLinkedIn.png";
 // @ts-ignore
-import treeInstagram from "./treeInstagram.png";
+import treeInstagram from "./assets/img/treeInstagram.png";
 // @ts-ignore
-import treeFacebook from "./treeFacebook.png";
+import treeFacebook from "./assets/img/treeFacebook.png";
 // @ts-ignore
-import treeTwitter from "./treeTwitter.png";
+import treeTwitter from "./assets/img/treeTwitter.png";
 
 export const Contact:FC = () => {
         return (

@@ -2,7 +2,7 @@ import "./Footer.scss";
 import {FC} from "react";
 import {NavLink} from "react-router-dom";
 // @ts-ignore
-import logoF from "./logoF.png";
+import logoF from "./assets/img/logoF.png";
 
 export const Footer:FC = () => {
     return(

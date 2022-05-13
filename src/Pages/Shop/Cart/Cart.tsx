@@ -2,8 +2,8 @@ import {FC, useContext, useEffect, useState} from "react";
 import {BasketContext, UserContext} from "../../../App";
 import {useNavigate} from "react-router-dom";
 import {Footer} from "../../../Component";
-import {ListItem} from "./listItem/listItem";
-import {PrintItem} from "./PrintItem/PrintItem";
+import {ListItem} from "../../../Component";
+import {PrintItem} from "../../../Component";
 import "./Cart.scss";
 
 

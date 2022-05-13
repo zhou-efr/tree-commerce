@@ -1,14 +1,14 @@
 import {FC, useState} from "react";
 // @ts-ignore
-import greenTree from "./greenTree.png";
+import greenTree from "./assets/img/greenTree.png";
 // @ts-ignore
-import logo from "./logo.png";
+import logo from "./assets/img/logo.png";
 // @ts-ignore
-import redTree from "./redTree.png";
+import redTree from "./assets/img/redTree.png";
 // @ts-ignore
-import pinkTree from "./pinkTree.png";
+import pinkTree from "./assets/img/pinkTree.png";
 // @ts-ignore
-import pinkLeaf from "./pinkLeaf.png";
+import pinkLeaf from "./assets/img/pinkLeaf.png";
 import "./home.scss";
 import {AnimatedLink} from "../../Component";
 
