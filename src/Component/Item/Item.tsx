@@ -34,7 +34,7 @@ export const Item:FC<itemProps> = ({tree, key}) => {
                 </div>
             </div>
             <div className={"lg:hidden h-32 flex items-center justify-around border-black border-t-2"}>
-                <img className={`h-4/5 aspect-square`} src={tree.picture} alt={tree.picture_author}/>
+                <img className={`h-4/5 aspect-square m-3 object-cover`} src={tree.picture} alt={tree.picture_author}/>
                 <div className={"w-2/3 h-full relative flex flex-col justify-around"}>
                     <div className={"absolute top-0 left-0 w-full h-full flex justify-center items-end p-4"}>
                         <div className={"opacity-75 font-dreaming text-6xl"}>S${(tree.price/100).toFixed(2)}</div>
