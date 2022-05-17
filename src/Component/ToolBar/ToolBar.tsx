@@ -171,7 +171,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                                         mobileShopping ? (
                                             <MobileShopping handleLinkClick={() => setOpen(true)}/>
                                         ):(
-                                            <div className={"flex w-full flex-col border-r-2 border-black"}>
+                                            <div className={"flex w-full flex-col border-r-2 border-black h-fit"}>
                                                 <div
                                                     className={"navbar-link-box w-full border-b-2 border-black group flex justify-between items-center"}
                                                 >
