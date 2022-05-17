@@ -65,8 +65,8 @@ export const ShoppingPage:FC = () => {
 
     return (
     <div className={`ShoppingPage relative w-screen h-fit overflow-x-hidden`}>
-        <div className={"z-10 absolute top-0 right-32 w-1/3 h-16 border-x-2 border-b-2 border-black bg-white flex justify-center font-light tracking-wider items-center uppercase text-3xl "}>{filterParameter || filter}</div>
-        <div className={`z-0 h-fit flex w-full -mt-px overflow-x-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4`}>
+        <div className={"z-10 absolute top-0 right-0 lg:right-32 w-2/3 lg:w-1/3 h-16 border-x-2 border-b-2 border-black bg-white flex justify-center font-light tracking-wider items-center uppercase text-3xl "}>{filterParameter || filter}</div>
+        <div className={`z-0 mt-16 border-black border-b-2 lg:border-b-0 pt-2 h-fit w-full lg:-mt-px overflow-x-hidden grid grid-cols-1 lg:grid-cols-4`}>
             {filteredTrees?.map((tree, index) =>
                 <Item key={index} tree={tree}/>
             )}
