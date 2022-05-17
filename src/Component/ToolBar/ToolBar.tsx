@@ -178,7 +178,7 @@ export const ToolBar:FC<ToolBarProps> = (props) => {
                                                     <Link onClick={() => setOpen(true)} className={"group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px] ml-2"} to={"/shopping"}> Shopping</Link>
                                                     <svg
                                                         onClick={() => setMobileShopping(!mobileShopping)}
-                                                        className={"h-4/5 aspect-square"}
+                                                        className={"h-6 aspect-square"}
                                                         viewBox="0 0 248 365"
                                                         fill="none"
                                                         xmlns="http://www.w3.org/2000/svg"
