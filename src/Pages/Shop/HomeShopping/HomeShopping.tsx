@@ -72,10 +72,40 @@ export const HomeShopping:FC = () => {
 
                 </div>
                 <div className={`h-[70vh] flex flex-col justify-start`}>
-                    <div className={`z-0 flex flex-row justify-evenly mt-20 hidden lg:block`}>
-                        <img className={"aspect-square h-1/2"} src={first} alt={"tea party tree"}/>
-                        <img className={"aspect-square h-1/2"} src={second} alt={"tea party tree"}/>
-                        <img className={"aspect-square h-1/2"} src={third} alt={"tea party tree"}/>
+                    <div className={`z-0 flex-row justify-evenly hidden lg:flex mt-20`}>
+                        <svg className={"scale-110"} width="297" height="277" viewBox="0 0 297 277" fill="none" xmlns="http://www.w3.org/2000/svg"
+                             xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <rect width="297" height="276.063" fill="white"/>
+                            <rect width="297" height="276.063" fill="url(#pattern10)" fillOpacity="0.8"/>
+                            <defs>
+                                <pattern id="pattern10" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlinkHref="#image0_24_391" transform="translate(0 -0.27933) scale(0.00243902 0.00262401)"/>
+                                </pattern>
+                                <image id="image0_24_391" width="410" height="594" xlinkHref={first}/>
+                            </defs>
+                        </svg>
+                        <svg width="297" height="277" viewBox="0 0 297 277" fill="none" xmlns="http://www.w3.org/2000/svg"
+                             xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <rect width="297" height="276.063" fill="white"/>
+                            <rect width="297" height="276.063" fill="url(#pattern11)"/>
+                            <defs>
+                                <pattern id="pattern11" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlinkHref="#image0_24_390" transform="translate(-0.197128) scale(0.00234723 0.00252525)"/>
+                                </pattern>
+                                <image id="image0_24_390" width="594" height="396" xlinkHref={second}/>
+                            </defs>
+                        </svg>
+                        <svg width="297" height="277" viewBox="0 0 297 277" fill="none" xmlns="http://www.w3.org/2000/svg"
+                             xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <rect width="297" height="276.063" fill="white"/>
+                            <rect width="297" height="276.063" fill="url(#pattern12)"/>
+                            <defs>
+                                <pattern id="pattern12" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlinkHref="#image0_24_392" transform="translate(0 -0.306882) scale(0.00252525 0.00271677)"/>
+                                </pattern>
+                                <image id="image0_24_392" width="396" height="594" xlinkHref={third}/>
+                            </defs>
+                        </svg>
                     </div>
                     <div className={"lg:hidden w-full p-5 flex justify-center items-center"}>
                         <Slider className={"lg:hidden w-full"} {...settings}>
@@ -87,7 +117,6 @@ export const HomeShopping:FC = () => {
                     <div className={"z-10 flex-row flex justify-between"}>
                         <div className={"rotate-2 ml-10 -mt-14 font-dreaming text-9xl"}>Tea Party</div>
                         <NavLink className={"text-underline-red mr-48 mt-14 tracking-wider text-lg group-hover:navbar-link-hover navbar-link after:bg-underline-red after:[height:2px]"} to={"/shopping-page?filter=Collection&value=Tea%20Party"}>Check here</NavLink>
-
                     </div>
                 </div>
 
