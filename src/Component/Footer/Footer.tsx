@@ -6,7 +6,7 @@ import logoF from "./assets/img/logoF.png";
 
 export const Footer:FC = () => {
     return(
-        <div className={"z-1 Footer overflow-hidden"}>
+        <div className={"z-1 Footer flex-col md:flex-row overflow-hidden"}>
             <NavLink id={"baliseDeMerde"} to={"/"}>
                 <img className={"logoF"} src={logoF} alt={"logo tree commerce"}/>
             </NavLink>
