@@ -11,7 +11,7 @@ export const Footer:FC = () => {
                 <img className={"logoF"} src={logoF} alt={"logo tree commerce"}/>
             </NavLink>
             <NavLink className={"navlink navbar-link after:bg-white"} to={"/shopping"}>SHOPPING</NavLink>
-            <NavLink className={"navlink navbar-link after:bg-white"} to={"/SignIn"}>ABOUT US</NavLink>
+            <NavLink className={"navlink navbar-link after:bg-white"} to={"/about-us"}>ABOUT US</NavLink>
             <NavLink className={"navlink navbar-link after:bg-white"} to={"/contact"}>CONTACT US</NavLink>
             <NavLink className={"navlink navbar-link after:bg-white"} to={"/"}>CONDITIONS</NavLink>
         </div>
